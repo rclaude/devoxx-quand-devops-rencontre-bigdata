@@ -1,6 +1,8 @@
-# Devoxx 2015: Quand DevOps rencontre BigData!
+## Devoxx 2015: Quand DevOps rencontre BigData!
 
-Hand's on Labs: [Quand DevOps rencontre BigData!](http://cfp.devoxx.fr/2015/talk/QTQ-9573/Quand_DevOps_rencontre_BigData!)
+### Hand's on Labs
+
+Ce [Hand's on Labs](http://cfp.devoxx.fr/2015/talk/QTQ-9573/Quand_DevOps_rencontre_BigData!) a été sélectionné
 
 Cette session est l’occasion de rapprocher le monde DevOps et le BigData!
 Venez découvrir [Apache Spark](https://spark.apache.org/) à travers l'analyse de logs et de la détection d'anomalies de trames réseaux.
@@ -16,3 +18,5 @@ Chaque étape de ce lab (sauf le REPL) peut se faire en Java soit en Scala, à v
 Prérequis: JVM 8, Scala 2.11, Spark 1.3, Git 2, un IDE
 
 Github: https://github.com/obazoud/devoxx-quand-devops-rencontre-bigdata
+
+# 
