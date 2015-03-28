@@ -7,7 +7,7 @@ public class SparkStreaming1Test extends SparkStreamingTest {
     @Test
     public void test_spark() throws Exception {
         SparkStreaming1 test = new SparkStreaming1();
-        test.process(9999, sc);
+        test.process("127.0.0.1", 9999, sc);
         sc.start();
         sc.awaitTerminationOrTimeout(15000L);
     }

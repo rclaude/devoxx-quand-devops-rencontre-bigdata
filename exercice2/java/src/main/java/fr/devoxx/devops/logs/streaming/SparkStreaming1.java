@@ -12,8 +12,8 @@ import java.io.Serializable;
  */
 public class SparkStreaming1 implements Serializable {
 
-    public void process(int port, JavaStreamingContext sc) {
-        sc.socketTextStream("127.0.0.1", port)
+    public void process(String hostname, int port, JavaStreamingContext sc) {
+        sc.socketTextStream(hostname, port)
                 .map(ApacheAccessLog::parse)
                 .map(ApacheAccessLog::getCode)
                 .filter(code -> code == 404)
@@ -22,14 +22,14 @@ public class SparkStreaming1 implements Serializable {
     }
 
     public static void main(String[] args) {
-        if (args.length < 1) {
-            System.err.println("Usage: " + SparkStreaming1.class.getName() + " <port>");
+        if (args.length < 2) {
+            System.err.println("Usage: " + SparkStreaming1.class.getName() + " <hostname> <port>");
             System.exit(1);
         }
         SparkConf conf = new SparkConf().setAppName(SparkStreaming1.class.getName());
         try (JavaStreamingContext sc = new JavaStreamingContext(conf, Durations.seconds(1))) {
             SparkStreaming1 sparkStreaming1 = new SparkStreaming1();
-            sparkStreaming1.process(Integer.parseInt(args[0]), sc);
+            sparkStreaming1.process(args[0], Integer.parseInt(args[1]), sc);
         }
     }
 }

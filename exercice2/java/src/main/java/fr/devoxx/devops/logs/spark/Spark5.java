@@ -12,11 +12,10 @@ import java.io.Serializable;
 /* Statistiques sur la taille des requêtes */
 public class Spark5 implements Serializable {
 
-    public Tuple4<Long, Double, Double, Double> process(JavaRDD<String> rdd) {
-        StatCounter stats = rdd.map(ApacheAccessLog::parse)
+    public StatCounter process(JavaRDD<String> rdd) {
+        return rdd.map(ApacheAccessLog::parse)
                 .mapToDouble(log -> Double.valueOf(log.getSize()))
                 .stats();
-        return new Tuple4<>(stats.count(), stats.min(), stats.mean(), stats.max());
     }
 
     public static void main(String[] args) {
@@ -27,8 +26,8 @@ public class Spark5 implements Serializable {
         SparkConf conf = new SparkConf().setAppName(Spark5.class.getName());
         try (JavaSparkContext sc = new JavaSparkContext(conf)) {
             Spark5 spark5 = new Spark5();
-            Tuple4<Long, Double, Double, Double> result = spark5.process(sc.textFile(args[0]));
-            System.out.println("->" + result._1() + ", " + result._2() + ", " + result._3() + ", " + result._4());
+            StatCounter stat = spark5.process(sc.textFile(args[0]));
+            System.out.println("->" + stat.count() + ", " + stat.min() + ", " + stat.mean() + ", " + stat.max());
         }
     }
 }
