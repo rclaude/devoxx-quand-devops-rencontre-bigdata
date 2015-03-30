@@ -25,7 +25,7 @@ public class ApacheAccessLog implements Serializable {
     private String agent;
     private String agentFamily;
 
-    public String getIPRange() {
+    public String getIpRange() {
         return host.substring(0, host.indexOf(".")) + ".x.x.x";
     }
 

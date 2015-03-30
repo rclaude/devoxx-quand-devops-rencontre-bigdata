@@ -15,7 +15,7 @@ public class Spark4 implements Serializable {
 
     public List<Tuple2<String, Long>> process(JavaRDD<String> rdd) {
         return rdd.map(ApacheAccessLog::parse)
-                .mapToPair(log -> new Tuple2<>(log.getIPRange(), 1L))
+                .mapToPair(log -> new Tuple2<>(log.getIpRange(), 1L))
                 .reduceByKey(Long::sum)
                 .top(3, new ValueComparator<>(Comparator.<Long>naturalOrder()));
     }

@@ -19,4 +19,14 @@ Prérequis: JVM 8, Scala 2.11, Spark 1.3, Git 2, un IDE
 
 Github: https://github.com/obazoud/devoxx-quand-devops-rencontre-bigdata
 
-# 
+### Exercice 1
+
+[Introduction à Spark](exercice1/README.md)
+
+### Exercice 2
+
+[Analyse des access logs Apache](exercice2/README.md)
+
+### Exercice 3
+
+[Analyse de trame réseaux](exercice3/README.md)

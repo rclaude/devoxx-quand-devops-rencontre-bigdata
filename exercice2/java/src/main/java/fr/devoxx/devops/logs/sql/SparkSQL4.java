@@ -18,7 +18,7 @@ public class SparkSQL4 extends SparkSQL {
         JavaRDD<ApacheAccessLog> accessLogs = rdd.map(ApacheAccessLog::parse);
         configure(sqlContext, accessLogs);
 
-        return sqlContext.sql("select IPRange, count(*) as ct from ApacheAccessLog group by IPRange order by ct desc limit 3")
+        return sqlContext.sql("select ipRange, count(*) as ct from ApacheAccessLog group by ipRange order by ct desc limit 3")
                 .toJavaRDD()
                 .mapToPair(row -> new Tuple2<>(row.getString(0), row.getLong(1)))
                 .collect();
