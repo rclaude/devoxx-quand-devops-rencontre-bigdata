@@ -23,6 +23,10 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 
 cd /vagrant/usb/spark
+
+bin/spark-shell --master local[2]
+
+
 sbin/start-all.sh
-bin/spark-shell
 MASTER=spark://precise64:7077 bin/spark-shell
+
